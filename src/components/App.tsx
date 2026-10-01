@@ -519,6 +519,7 @@ export default class App extends React.Component<Props, State> {
     const theme = this.state.theme;
     return (
       <div className="app" data-theme={theme} style={sx(`background:var(--bg);color:var(--text);min-height:100vh;font-family:'IBM Plex Sans',sans-serif;transition:background .3s ease,color .3s ease`)}>
+        {this.renderAnnouncement()}
         {this.renderHeader()}
         <main id="top" style={sx(`max-width:1200px;margin:0 auto;padding:0 24px`)}>
           {this.renderHero()}
@@ -533,6 +534,22 @@ export default class App extends React.Component<Props, State> {
         {this.renderFooter()}
         {this.renderLightbox()}
         {this.renderReferralModal()}
+      </div>
+    );
+  }
+
+  renderAnnouncement() {
+    const isTr = this.lang === 'tr';
+    return (
+      <div style={sx(`background:var(--accent);color:var(--accent-contrast);line-height:1.35`)}>
+        <div style={sx(`max-width:1200px;margin:0 auto;padding:18px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 20px;text-align:center`)}>
+          <span style={sx(`font-family:'Space Grotesk';font-weight:700;font-size:clamp(18px,2.6vw,24px);letter-spacing:-.2px`)}>
+            {isTr ? 'Yeni web sitemiz yayında!' : 'Our new website is live!'}
+          </span>
+          <a href="https://www.executortrading.com" target="_blank" rel="noopener" style={sx(`display:inline-block;background:var(--accent-contrast);color:var(--accent);font-family:'Space Grotesk';font-weight:700;font-size:clamp(15px,2vw,18px);padding:10px 20px;border-radius:10px;text-decoration:none;box-shadow:0 2px 10px rgba(0,0,0,.18)`)}>
+            {isTr ? 'www.executortrading.com adresini ziyaret edin →' : 'Visit www.executortrading.com →'}
+          </a>
+        </div>
       </div>
     );
   }
